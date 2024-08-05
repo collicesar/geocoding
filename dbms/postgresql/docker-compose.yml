@@ -1,0 +1,28 @@
+version: '3.8'
+
+networks:
+  backend:
+    external: false
+    name: backend
+services:
+  dbpostgis:
+    networks:
+      - backend
+    image: postgis/postgis
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=username
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=geocoding
+    
+  # adminer:
+  #   networks:
+  #     - backend
+  #   image: adminer
+  #   restart: always
+  #   ports:
+  #     - 8080:8080
+  
+  
